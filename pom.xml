@@ -18,6 +18,8 @@
         <hamcrest.version>2.2</hamcrest.version>
         <testng.version>7.9.0</testng.version>
         <surefire.version>3.2.3</surefire.version>
+        <jsonassert.version>1.5.1</jsonassert.version>
+        <json-simple.version>1.1.1</json-simple.version>
     </properties>
 
     <dependencies>
@@ -50,6 +52,16 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>${jsonassert.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple.version}</version>
         </dependency>
     </dependencies>
     <build>

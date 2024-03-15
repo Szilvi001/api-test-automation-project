@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d062fd3f-e3c8-4036-b4f5-e8387eb025c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/apitests/client/ApiClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/TestRunnerIT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/hooks/Hooks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/stepdefinitions/CommonStepDefs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/util/StepDefHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/features/posts/getPost.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/repository/TestDataRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/testdata/expectedGetPostResponse.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/apitests/hooks/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/hooks/Hooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/apitests/stepdefinitions/CommonStepDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/stepdefinitions/CommonStepDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/apitests/util/StepDefHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/apitests/util/StepDefHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/posts/getPost.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/posts/getPost.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +43,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/Szilvia_Buborek/IdeaProjects/api-test-automation-project",
     "settings.editor.selected.configurable": "preferences.updates",
     "show.migrate.to.gradle.popup": "false"
   }
@@ -135,5 +131,16 @@
       <updated>1709973295939</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
