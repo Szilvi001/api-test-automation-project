@@ -7,7 +7,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 public class ApiClient {
-    private Client client;
+    private final Client client;
     private final String basePath;
 
     public ApiClient(String basePath) {
@@ -15,8 +15,7 @@ public class ApiClient {
         this.client = ClientBuilder.newClient();
     }
 
-    // Method to make a GET request
-    public Response get(String path) {
+    public Response sendGetRequest(String path) {
         return client
                 .target(basePath)
                 .path(path)
@@ -24,8 +23,7 @@ public class ApiClient {
                 .get();
     }
 
-    // Method to make a POST request
-    public Response post(String path, Object request) {
+    public Response sendPostRequest(String path, Object request) {
         return client
                 .target(basePath)
                 .path(path)
@@ -33,8 +31,7 @@ public class ApiClient {
                 .post(Entity.entity(request, MediaType.APPLICATION_JSON));
     }
 
-    // Method to make a PUT request
-    public Response put(String path, Object request) {
+    public Response sendPutRequest(String path, Object request) {
         return client
                 .target(basePath)
                 .path(path)
@@ -42,8 +39,7 @@ public class ApiClient {
                 .put(Entity.entity(request, MediaType.APPLICATION_JSON));
     }
 
-    // Method to make a DELETE request
-    public Response delete(String path) {
+    public Response sendDeleteRequest(String path) {
         return client
                 .target(basePath)
                 .path(path)
