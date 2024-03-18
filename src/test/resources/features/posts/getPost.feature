@@ -1,4 +1,4 @@
-Feature: GET request on the json-server API
+Feature: Retrieve post from the json-server API
 
   Scenario: GET a post from the API
     When I send a GET request to "/posts/1"

@@ -19,21 +19,40 @@ public class CommonStepDefs extends StepDefHelper {
 
     final String TEST_DATA_PATH = "src/test/resources/testdata/";
     final String POST_REQUEST_FILE = "createPostRequest.json";
-
+    final String PUT_REQUEST_FILE = "updatePostRequest.json";
     final String POST_RESPONSE_FILE = "expectedGetPostResponse.json";
-    final String POST_REQUEST_PATH = "/posts";
+    final String POST = "POST";
+
     ApiClient apiClient = new ApiClient("https://my-json-server.typicode.com/szilvi001/json-server");
 
     TestDataRepository testDataRepository = new TestDataRepository();
 
-    @Given("the request is prepared")
-    public void theRequestIsPrepared() throws IOException {
-        testDataRepository.setRequestAsJson(readJsonFile(TEST_DATA_PATH + POST_REQUEST_FILE));
+    @Given("^the (POST|PUT) request is prepared$")
+    public void theRequestIsPrepared(String requestType) throws IOException {
+        String requestFile = POST.equals(requestType) ? POST_REQUEST_FILE : PUT_REQUEST_FILE;
+        testDataRepository.setRequestAsJson(readJsonFile(TEST_DATA_PATH + requestFile));
     }
 
     @When("I send a GET request to {string}")
     public void iSendAGETRequestTo(String endpoint) {
         testDataRepository.setResponse(apiClient.sendGetRequest(endpoint));
+    }
+
+    @When("I send a POST request to {string}")
+    public void iSendAPOSTRequestTo(String endpoint) {
+        testDataRepository.setResponse(apiClient.sendPostRequest(endpoint,
+                testDataRepository.getRequestAsJson().toString()));
+    }
+
+    @When("I send a PUT request to {string}")
+    public void iSendAPUTRequestTo(String endpoint) {
+        testDataRepository.setResponse(apiClient.sendPutRequest(endpoint,
+                testDataRepository.getRequestAsJson().toString()));
+    }
+
+    @When("I send a DELETE request to {string}")
+    public void iSendADELETERequestTo(String endpoint) {
+        testDataRepository.setResponse(apiClient.sendDeleteRequest(endpoint));
     }
 
     @Then("the response status code should be {int}")
@@ -47,20 +66,5 @@ public class CommonStepDefs extends StepDefHelper {
         testDataRepository.setExpectedResponse(readJsonFile(TEST_DATA_PATH + POST_RESPONSE_FILE));
         JSONAssert.assertEquals(testDataRepository.getExpectedResponse().toString(),
                 testDataRepository.getResponse().readEntity(String.class), JSONCompareMode.LENIENT);
-    }
-
-    @When("I send a POST request to {string}")
-    public void iSendAPOSTRequestTo(String arg0) throws IOException {
-        testDataRepository.setResponse(apiClient.sendPostRequest(POST_REQUEST_PATH,
-                testDataRepository.getRequestAsJson().toString()));
-    }
-
-    @When("I send a PUT request to {string}")
-    public void iSendAPUTRequestTo(String arg0) {
-        
-    }
-
-    @When("I send a DELETE request to {string}")
-    public void iSendADELETERequestTo(String arg0) {
     }
 }
