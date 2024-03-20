@@ -20,22 +20,19 @@ public class CommonStepDefs extends StepDefHelper {
     final String TEST_DATA_PATH = "src/test/resources/testdata/";
     final String POST_REQUEST_FILE = "createPostRequest.json";
     final String PUT_REQUEST_FILE = "updatePostRequest.json";
+    final String REQUEST_EMPTY_BODY = "createPostRequestEmpty.json";
     final String POST_RESPONSE_FILE = "expectedGetPostResponse.json";
     final String POST = "POST";
 
-    ApiClient apiClient = new ApiClient("https://my-json-server.typicode.com/szilvi001/json-server");
-
-    TestDataRepository testDataRepository = new TestDataRepository();
-
-    @Given("^the (POST|PUT) request is prepared$")
+    @Given("^the (POST|PUT) request is prepared")
     public void theRequestIsPrepared(String requestType) throws IOException {
         String requestFile = POST.equals(requestType) ? POST_REQUEST_FILE : PUT_REQUEST_FILE;
         testDataRepository.setRequestAsJson(readJsonFile(TEST_DATA_PATH + requestFile));
     }
 
-    @When("I send a GET request to {string}")
-    public void iSendAGETRequestTo(String endpoint) {
-        testDataRepository.setResponse(apiClient.sendGetRequest(endpoint));
+    @Given("^the (POST|PUT) request is prepared with empty request body$")
+    public void thePUTRequestIsPreparedWithEmptyRequestBody(String requestType) throws IOException {
+        testDataRepository.setRequestAsJson(readJsonFile(TEST_DATA_PATH + REQUEST_EMPTY_BODY));
     }
 
     @When("I send a POST request to {string}")
@@ -44,15 +41,20 @@ public class CommonStepDefs extends StepDefHelper {
                 testDataRepository.getRequestAsJson().toString()));
     }
 
+    @When("I send a DELETE request to {string}")
+    public void iSendADELETERequestTo(String endpoint) {
+        testDataRepository.setResponse(apiClient.sendDeleteRequest(endpoint));
+    }
+
+    @When("I send a GET request to {string}")
+    public void iSendAGETRequestTo(String endpoint) {
+        testDataRepository.setResponse(apiClient.sendGetRequest(endpoint));
+    }
+
     @When("I send a PUT request to {string}")
     public void iSendAPUTRequestTo(String endpoint) {
         testDataRepository.setResponse(apiClient.sendPutRequest(endpoint,
                 testDataRepository.getRequestAsJson().toString()));
-    }
-
-    @When("I send a DELETE request to {string}")
-    public void iSendADELETERequestTo(String endpoint) {
-        testDataRepository.setResponse(apiClient.sendDeleteRequest(endpoint));
     }
 
     @Then("the response status code should be {int}")
